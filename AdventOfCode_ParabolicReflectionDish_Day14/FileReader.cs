@@ -19,7 +19,7 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
                 foreach (var line in text)
                 {
                     var newLine = line.Split("").ToList();
-                    platform.Platform.Add(new LineModel(newLine));
+                    platform.Platform.Add(newLine);
                 }
             }
 

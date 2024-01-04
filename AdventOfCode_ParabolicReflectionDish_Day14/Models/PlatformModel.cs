@@ -8,14 +8,14 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14.Models
 {
     public class PlatformModel
     {
-        public List<LineModel> Platform {  get; set; }
+        public List<List<string>> Platform {  get; set; }
 
-        public List<LineModel>UpdatedPlatform { get; set; }
+        public List<List<string>>  UpdatedPlatform { get; set; }
 
         public PlatformModel()
         {
-            Platform = new List<LineModel>();
-            UpdatedPlatform = new List<LineModel>();
+            Platform = new List<List<string>>();
+            UpdatedPlatform = new List<List<string>>();
         }
     }
 }

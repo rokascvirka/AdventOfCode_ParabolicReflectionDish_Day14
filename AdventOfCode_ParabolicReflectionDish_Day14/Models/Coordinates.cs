@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode_ParabolicReflectionDish_Day14.Models
 {
-    public class LineModel
+    public class Coordinates
     {
-        public List<string> Line {  get; set; }
-        public int Value { get; set; }
+        public int X {  get; set; }
+        public int Y { get; set; }
 
-        public LineModel(List<string> line)
+        public Coordinates(int x, int y)
         {
-            Line = line;
+            X = x;
+            Y = y;
         }
     }
 }
