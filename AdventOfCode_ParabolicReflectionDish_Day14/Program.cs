@@ -20,25 +20,8 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
             {
                 platform.UpdatedPlatform.Add(new List<string>(Enumerable.Repeat(".", platform.Platform[0][0].Length).ToList()));
             }
-            StoneProcessor.MoveNorth(platform);
-            Console.WriteLine();
-
-
-            foreach (var row in platform.UpdatedPlatform)
-            {
-                Console.WriteLine(string.Join("", row));
-            }
-            Console.WriteLine();
-            StoneProcessor.MoveWest(platform);
-
-            Console.WriteLine();
-
-            foreach (var row in platform.UpdatedPlatform)
-            {
-                Console.WriteLine(string.Join("", row));
-            }
-
-           var sum = Calculator.CountSum(platform);
+            StoneProcessor.MoveInCycles(platform, 1000000000);
+            var sum = Calculator.CountSum(platform);
 
             Console.WriteLine();
             Console.WriteLine($"Sum: {sum}");
