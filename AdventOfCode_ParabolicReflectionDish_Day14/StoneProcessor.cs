@@ -45,7 +45,7 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
             for (int row = 0; row < rows; row++)
             {
                 int mostLeftPosition = 0;
-                for (int col = 0; col < columns - 1; col++)
+                for (int col = 0; col < columns; col++)
                 {
                     if (platform.UpdatedPlatform[row][col] == "O")
                     {
@@ -53,7 +53,7 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
                         platform.UpdatedPlatform[row][mostLeftPosition] = "O";
                         mostLeftPosition++;
                     }
-                    else if (platform.Platform[row][col]== "#")
+                    else if (platform.UpdatedPlatform[row][col]== "#")
                     {
                         platform.UpdatedPlatform[row][col] = "#";
                         mostLeftPosition = col + 1;
