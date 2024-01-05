@@ -9,17 +9,11 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
 {
     public class StoneProcessor
     {
-        public static void MoveStones(PlatformModel platform)
+        public static void MoveNorth(PlatformModel platform)
         {
             var columns = platform.Platform[0][0].Length;
             var rows = platform.Platform.Count;
 
-
-
-            for (int i = 0; i < rows; i++)
-            {
-                platform.UpdatedPlatform.Add(new List<string>(Enumerable.Repeat(".", columns).ToList()));
-            }
 
             for (int col = 0; col < columns; col++)
             {
@@ -35,13 +29,37 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
                     }
                     else if (platform.Platform[row][0][col].ToString() == "#")
                     {
-                      
                         platform.UpdatedPlatform[row][col] = "#";
                         topmostEmptyPosition = row + 1; 
                     }
                 }
             }
 
+        }
+
+        public static void MoveWest(PlatformModel platform)
+        {
+            var columns = platform.Platform[0][0].Length;
+            var rows = platform.Platform.Count;
+
+            for (int row = 0; row < rows; row++)
+            {
+                int mostLeftPosition = 0;
+                for (int col = 0; col < columns - 1; col++)
+                {
+                    if (platform.UpdatedPlatform[row][col] == "O")
+                    {
+                        platform.UpdatedPlatform[row][col] = ".";
+                        platform.UpdatedPlatform[row][mostLeftPosition] = "O";
+                        mostLeftPosition++;
+                    }
+                    else if (platform.Platform[row][col]== "#")
+                    {
+                        platform.UpdatedPlatform[row][col] = "#";
+                        mostLeftPosition = col + 1;
+                    }
+                }
+            }
         }
     }
 }
