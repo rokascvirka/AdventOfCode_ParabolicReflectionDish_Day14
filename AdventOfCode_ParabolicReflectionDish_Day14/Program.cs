@@ -9,7 +9,25 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
             var FILE_PATH = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "", "InputDay14.txt");
 
             var platform = FileReader.ReadFile(FILE_PATH);
-            Console.WriteLine("Done!");
+
+
+            foreach (var row in platform.Platform)
+            {
+                Console.WriteLine(string.Join("", row));
+            }
+            StoneProcessor.MoveStones(platform);
+
+            Console.WriteLine();
+
+            foreach (var row in platform.UpdatedPlatform)
+            {
+                Console.WriteLine(string.Join("", row));
+            }
+
+           var sum = Calculator.CountSum(platform);
+
+            Console.WriteLine();
+            Console.WriteLine($"Sum: {sum}");
         }
     }
 }

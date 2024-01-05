@@ -11,73 +11,36 @@ namespace AdventOfCode_ParabolicReflectionDish_Day14
     {
         public static void MoveStones(PlatformModel platform)
         {
-            var columns = platform.Platform[0].Count;
+            var columns = platform.Platform[0][0].Length;
             var rows = platform.Platform.Count;
 
-            for (int i = 1; i < columns; i++)
-            {
-                for (int j = 0; j < rows; j++)
-                {
-                    if (platform.Platform[j][i] == "#")
-                    {
-                        var stones = CountStones(platform, i, j);
 
+
+            for (int i = 0; i < rows; i++)
+            {
+                platform.UpdatedPlatform.Add(new List<string>(Enumerable.Repeat(".", columns).ToList()));
+            }
+
+            for (int col = 0; col < columns; col++)
+            {
+                int topmostEmptyPosition = 0;
+
+                for (int row = 0; row < rows; row++)
+                {
+                    if (platform.Platform[row][0][col].ToString() == "O")
+                    {
+                 
+                        platform.UpdatedPlatform[topmostEmptyPosition][col] = "O";
+                        topmostEmptyPosition++;
+                    }
+                    else if (platform.Platform[row][0][col].ToString() == "#")
+                    {
+                      
+                        platform.UpdatedPlatform[row][col] = "#";
+                        topmostEmptyPosition = row + 1; 
                     }
                 }
             }
-        }
-
-
-        private static int CountStones(PlatformModel platform, int column, int startingRow)
-        {
-            var count = 0;
-            var columns = platform.Platform[0].Count;
-            var rows = platform.Platform.Count;
-
-            for(int i = startingRow; i < rows; i++)
-            {
-                for(int j = column; j < columns; j++)
-                {
-                    if (platform.Platform[i][j] == "0")
-                    {
-                        count++;
-                    }
-                    if (platform.Platform[i][j] == "#")
-                    {
-                        break;
-                    }
-                }
-                break;
-            }
-
-            return count;
-        }
-
-        private static (List<Coordinates>, List<Coordinates>)  GetStonesInfoFromColumn(PlatformModel platform, int columnIndex)
-        {
-            var columns = platform.Platform[0].Count;
-            var rows = platform.Platform.Count;
-
-            List<Coordinates> hashCoordinates = new List<Coordinates>();
-            List<Coordinates> stones = new List<Coordinates>();
-
-            for(int row = 0; row < rows; row++)
-            {
-                if (platform.Platform[row][columnIndex] == "#")
-                {
-                     hashCoordinates.Add(new Coordinates(row, columnIndex));
-                }
-                if (platform.Platform[row][columnIndex] == "O")
-                {
-                    stones.Add(new Coordinates(row, columnIndex));
-                }
-            }
-
-            return (hashCoordinates, stones);
-        }
-
-        private static void MoveStones(PlatformModel platform, (List<Coordinates>, List<Coordinates>) coords)
-        {
 
         }
     }
